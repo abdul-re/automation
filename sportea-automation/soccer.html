@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,7 +61,7 @@
 
     <nav class="navbar navbar-expand-lg  navbar-dark bg-success fixed-top navbar-brand-center">
         <div class="container-fluid navbar-brand-center">
-            <a class="navbar-brand" href="#">AUTOMATION FOR SOCCER</a>
+            <a class="navbar-brand" href="#">AUTOMATION OF NEW SPORTEA</a>
         </div>
       </nav>
 
@@ -141,11 +142,18 @@ $('.copybtn').mouseleave(function(){
 
 function copy(num){
 
+    let title = $(`table tr:nth-child(${num+1}) td:nth-child(4)`).text()
+
 let hreftag = document.querySelectorAll('#aTag a')
 let query = hreftag[num].search
 console.log(query);
 
-navigator.clipboard.writeText(`http://live.cr7streams.ml/p/sp.html${query}`);
+let url = `http://live.cr7streams.ml/p/sp.html${query+"&match="+title}`
+
+let simpleUrl = url.replace(/ /g, "-");
+
+
+navigator.clipboard.writeText(simpleUrl.toLowerCase());
 
 }
 
