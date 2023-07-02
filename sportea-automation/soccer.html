@@ -97,7 +97,10 @@ const display = document.getElementById('display')
 
 $('#none').append(auto)
 
-for(i = 0; i<50;i++){
+
+const linksAmount = $('tbody tr').length
+
+for(i = 0; i<linksAmount ;i++){
 
 
 let aTags = $(`table tr:nth-child(${i+1}) td:nth-child(7)`).html()

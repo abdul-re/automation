@@ -1,7 +1,5 @@
 
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,17 +73,7 @@
 
         <center>
           <textarea rows="6" class="form-control" aria-label="With textarea" id="auto" style="width: 60%; border: 2px solid #dee2e6;"></textarea>
-
-
-          <input type="radio" id="StreamsGate" name="link_Generator" checked>
-          <label for="StreamsGate">StreamsGate</label>
-          
-          <input type="radio" id="Sportsurge" name="link_Generator">
-          <label for="Sportsurge">Sportsurge</label>
-
-          <br> <br>
-
-
+          <br>
           <button type="button" class="btn btn-success" onclick="test()">GENRATE</button> <br> <br>
 
         </center>
@@ -109,34 +97,23 @@ const display = document.getElementById('display')
 
 $('#none').append(auto)
 
-
-
-const linksAmount = $('tbody tr').length
-
-for(i = 0; i<linksAmount ;i++){
+for(i = 0; i<50;i++){
 
 
 let aTags = $(`table tr:nth-child(${i+1}) td:nth-child(7)`).html()
 
 let title = $(`table tr:nth-child(${i+1}) td:nth-child(4)`).text()
-let league = $(`table tr:nth-child(${i+1}) td:nth-child(2)`).text().toUpperCase()
 
 
 document.querySelector('#aTag').innerHTML += aTags
 
 
 
-
-let StreamsGate = document.getElementById('StreamsGate')
-let Sportsurge = document.getElementById('Sportsurge')
-
-
-
-
+let display = document.getElementById('display')
 
 display.innerHTML += `
             <div class="card ">
-            <button class="copybtn bg-secondary" onclick="copy(${i})"> <span> ${i+1} </span> <br> ${league} : ${title} </button>
+            <button class="copybtn bg-secondary" onclick="copy(${i})"> <span> ${i+1} </span> <br> ${title} </button>
         </div>
         <br>`;
 
@@ -163,57 +140,22 @@ $('.copybtn').mouseleave(function(){
 }
 
 
-
 function copy(num){
 
     let title = $(`table tr:nth-child(${num+1}) td:nth-child(4)`).text()
 
 let hreftag = document.querySelectorAll('#aTag a')
 let query = hreftag[num].search
-
+console.log(query);
 
 let url = `http://www.cr7streams.ml/p/sp1.html${query+"&match="+title}`
+
 let simpleUrl = url.replace(/ /g, "-");
+
 
 navigator.clipboard.writeText(simpleUrl.toLowerCase());
 
-localStorage.setItem('checked', 'no')
-
-
-if(Sportsurge.checked){
-
-let urlSurge = `http://www.cr7streams.ml/p/sp1.html${query+"&match="+title}&stream`
-let simpleUrlSurge = urlSurge.replace(/ /g, "-");
-
-navigator.clipboard.writeText(simpleUrlSurge.toLowerCase());
-localStorage.setItem('checked', 'yes')
-
-
 }
-
-}
-
-
-if(localStorage.getItem('checked') === 'yes'){
-    Sportsurge.checked = true
-}
-
-  document.getElementById('Sportsurge').addEventListener('click', function(){
-
-  $('.copybtn').addClass('bg-secondary')
-  $('.copybtn').removeClass('bg-danger')
-
-  })
-
-
-  document.getElementById('StreamsGate').addEventListener('click', function(){
-
-$('.copybtn').addClass('bg-secondary')
-$('.copybtn').removeClass('bg-danger')
-
-})
-
-
 
     </script>
 </body>
