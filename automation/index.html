@@ -131,13 +131,16 @@
                 `table tr:nth-child(${i + 1}) td:nth-child(6)`
               ).html();
 
-              let title = $(
-                `table tr:nth-child(${i + 1}) td:nth-child(3)`
-              ).text();
+              let title = $(`table tr:nth-child(${i + 1}) td:nth-child(3)`)
+                .text()
+                .replace("mlb", "")
+                .replace("nba", "")
+                .replace("wnba", "")
+                .replace("cfl", "");
 
-         //     let league = $(
-           //     `table tr:nth-child(${i + 1}) td:nth-child(2)`
-             // ).text();
+              //     let league = $(
+              //     `table tr:nth-child(${i + 1}) td:nth-child(2)`
+              // ).text();
 
               document.querySelector("#aTag").innerHTML += aTags;
 
@@ -145,7 +148,7 @@
 
               display.innerHTML += `
     <div class="card ">
-    <button class="copybtn bg-secondary" onclick="copy(${i})"> <span> ${
+    <button class="copybtn bg-secondary" onclick="copy(${i},${title})"> <span> ${
                 i + 1
               } </span> <br> ${title} </button>
 </div>
@@ -173,7 +176,13 @@
       }
 
       function copy(num) {
-        let title = $(`table tr:nth-child(${num + 1}) td:nth-child(3)`).text();
+        let title = $(`table tr:nth-child(${num + 1}) td:nth-child(3)`)
+          .text()
+          .replace("mlb", "")
+          .replace("nba", "")
+          .replace("wnba", "")
+          .replace("cfl", "")
+          .replace("mlb", "");
 
         let hreftag = document.querySelectorAll("#aTag a");
         let query = hreftag[num].search;
