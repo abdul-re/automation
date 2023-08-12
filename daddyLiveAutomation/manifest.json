@@ -1,0 +1,13 @@
+{
+    "manifest_version": 2,
+   
+    "name": "Daddy Live Hd AutoMation",
+    "version": "0.1.0",
+    "description": "Lateral blog post demo extension",
+   
+    "content_scripts": [{
+      "js": ["app.js"],
+      "matches": ["https://streamsgate.net/*"]
+    }]
+   
+  }
