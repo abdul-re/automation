@@ -76,15 +76,6 @@
 
     <div>
       <center>
-        <input type="radio" id="StreamsGate" name="link_Generator" checked />
-        <label for="StreamsGate">StreamsGate</label>
-
-        <input type="radio" id="Sportsurge" name="link_Generator" />
-        <label for="Sportsurge">Sportsurge</label>
-
-        <br />
-        <br />
-
         <button
           type="button"
           class="btn btn-success"
@@ -191,37 +182,7 @@
         let simpleUrl = url.replace(/ /g, "-");
 
         navigator.clipboard.writeText(simpleUrl.toLowerCase());
-
-        localStorage.setItem("checked", "no");
-
-        if (Sportsurge.checked) {
-          let urlSurge = `https://footy1.tk/p/sp${num + 1}.html${
-            query + "&match=" + title
-          }&stream`;
-          let simpleUrlSurge = urlSurge.replace(/ /g, "-");
-
-          navigator.clipboard.writeText(simpleUrlSurge.toLowerCase());
-          localStorage.setItem("checked", "yes");
-        }
       }
-
-      if (localStorage.getItem("checked") === "yes") {
-        Sportsurge.checked = true;
-      }
-
-      document
-        .getElementById("Sportsurge")
-        .addEventListener("click", function () {
-          $(".copybtn").addClass("bg-secondary");
-          $(".copybtn").removeClass("bg-danger");
-        });
-
-      document
-        .getElementById("StreamsGate")
-        .addEventListener("click", function () {
-          $(".copybtn").addClass("bg-secondary");
-          $(".copybtn").removeClass("bg-danger");
-        });
     </script>
   </body>
 </html>
