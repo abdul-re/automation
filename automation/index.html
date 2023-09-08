@@ -139,10 +139,6 @@
                 .replace("cfl", "")
                 .replace("fighting", "");
 
-              //     let league = $(
-              //     `table tr:nth-child(${i + 1}) td:nth-child(2)`
-              // ).text();
-
               document.querySelector("#aTag").innerHTML += aTags;
 
               let display = document.getElementById("display");
@@ -189,7 +185,7 @@
         let hreftag = document.querySelectorAll("#aTag a");
         let query = hreftag[num].search;
 
-        let url = `http://www.isr-streams.tk/p/sp.html${
+        let url = `http://www.isr-streams.tk/p/sp${num + 1}.html${
           query + "&match=" + title
         }`;
         let simpleUrl = url.replace(/ /g, "-");
@@ -199,7 +195,7 @@
         localStorage.setItem("checked", "no");
 
         if (Sportsurge.checked) {
-          let urlSurge = `https://footy1.tk/p/sportea.html${
+          let urlSurge = `https://footy1.tk/p/sp${num + 1}.html${
             query + "&match=" + title
           }&stream`;
           let simpleUrlSurge = urlSurge.replace(/ /g, "-");
