@@ -72,14 +72,10 @@
       </div>
     </nav>
 
-    <br /><br />
+    <br /><br /><br />
 
     <div>
       <center>
-
-        <br />
-        <br />
-
         <button
           type="button"
           class="btn btn-success"
@@ -134,10 +130,6 @@
                 .replace("cfl", "")
                 .replace("fighting", "");
 
-              //     let league = $(
-              //     `table tr:nth-child(${i + 1}) td:nth-child(2)`
-              // ).text();
-
               document.querySelector("#aTag").innerHTML += aTags;
 
               let display = document.getElementById("display");
@@ -184,16 +176,13 @@
         let hreftag = document.querySelectorAll("#aTag a");
         let query = hreftag[num].search;
 
-        let url = `https://live.cr7streams.tk/p/sp.html${
+        let url = `http://live.cr7streams.tk/p/sp${num + 1}.html${
           query + "&match=" + title
         }`;
         let simpleUrl = url.replace(/ /g, "-");
 
         navigator.clipboard.writeText(simpleUrl.toLowerCase());
-
-
       }
-
     </script>
   </body>
 </html>
