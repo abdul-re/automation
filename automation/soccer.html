@@ -100,89 +100,69 @@
       crossorigin="anonymous"
     ></script>
 
-    <script>
-      function test() {
-        document.getElementById("none").innerHTML = "";
-        document.querySelector("#aTag").innerHTML = "";
-        document.getElementById("display").innerHTML = "";
+ <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 
-        document.getElementById("gBtn").innerText = "GENERATE NEW";
+<script>
+  function test() {
+    $("#none, #aTag, #display").html("");
 
-        navigator.clipboard
-          .readText()
-          .then(function (copiedText) {
-            $("#none").append(copiedText);
-            console.log(copiedText);
-          })
-          .then(function () {
-            const linksAmount = $("tbody tr").length;
+    $("#gBtn").text("GENERATE NEW");
 
-            for (i = 0; i < linksAmount; i++) {
-              let aTags = $(
-                `table tr:nth-child(${i + 1}) td:nth-child(6)`
-              ).html();
+    navigator.clipboard.readText().then(function (copiedText) {
+      $("#none").append(copiedText);
+      console.log(copiedText);
 
-              let title = $(`table tr:nth-child(${i + 1}) td:nth-child(3)`)
-                .text()
-                .replace("mlb", "")
-                .replace("nba", "")
-                .replace("wnba", "")
-                .replace("cfl", "")
-                .replace("fighting", "");
+      const linksAmount = $("tbody tr").length;
 
-              document.querySelector("#aTag").innerHTML += aTags;
+      for (let i = 0; i < linksAmount; i++) {
+        let aTags = $(`table tr:nth-child(${i + 1}) td:nth-child(6)`).html();
 
-              let display = document.getElementById("display");
-
-              display.innerHTML += `
-    <div class="card ">
-    <button class="copybtn bg-secondary" onclick="copy(${i})"> <span> ${
-                i + 1
-              } </span> <br> ${title} </button>
-</div>
-<br>`;
-
-              $(".navbar-brand-center a").text(
-                `TOTAL MATCHES FOUND : ${i + 1}`
-              );
-
-              $(".copybtn").click(function () {
-                $(this).addClass("bg-danger");
-              });
-
-              $(".copybtn").mouseenter(function () {
-                $(this).removeClass("bg-secondary");
-                $(this).addClass("bg-success");
-              });
-
-              $(".copybtn").mouseleave(function () {
-                $(this).addClass("bg-secondary");
-                $(this).removeClass("bg-success");
-              });
-            }
-          });
-      }
-
-      function copy(num) {
-        let title = $(`table tr:nth-child(${num + 1}) td:nth-child(3)`)
+        let title = $(`table tr:nth-child(${i + 1}) td:nth-child(3)`)
           .text()
-          .replace("mlb", "")
-          .replace("nba", "")
-          .replace("wnba", "")
-          .replace("cfl", "")
-          .replace("mlb", "")
-          .replace("fighting", "");
+          .replace(/(mlb|nba|wnba|cfl|fighting|nfl|nhl|soccer)/g, "");
 
-        let hreftag = document.querySelectorAll("#aTag a");
-        let query = hreftag[num].search;
+        $("#aTag").append(aTags);
 
-        let url = `http://live.germany3d.tk/p/sp.html${
-          query + "&match=" + title
-        }`;
-        let simpleUrl = url.replace(/ /g, "-");
+        let display = document.getElementById("display");
 
-        navigator.clipboard.writeText(simpleUrl.toLowerCase());
+        display.innerHTML += `
+          <div class="card ">
+            <button class="copybtn bg-secondary" onclick="copy(${i})">
+              <span>${i + 1}</span><br>${title}
+            </button>
+          </div>
+          <br>`;
+
+        $(".navbar-brand-center a").text(`TOTAL MATCHES FOUND : ${i + 1}`);
       }
-    </script>
+
+      $(".copybtn")
+        .click(function () {
+          $(this).addClass("bg-danger");
+        })
+        .mouseenter(function () {
+          $(this).removeClass("bg-secondary").addClass("bg-success");
+        })
+        .mouseleave(function () {
+          $(this).addClass("bg-secondary").removeClass("bg-success");
+        });
+    });
+  }
+
+  function copy(num) {
+    let title = $(`table tr:nth-child(${num + 1}) td:nth-child(3)`)
+      .text()
+      .replace(/(mlb|nba|wnba|cfl|fighting|nfl|nhl|soccer)/g, "");
+
+    let hreftag = document.querySelectorAll("#aTag a");
+    let query = hreftag[num].search;
+
+    let url = `https://s.shora-streams.cf/p/sp1.html${query}&match=${title}`;
+    let simpleUrl = url.replace(/ /g, "-").toLowerCase();
+
+    navigator.clipboard.writeText(simpleUrl);
+  }
+</script>
+
   </body>
 </html>
