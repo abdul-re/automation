@@ -1,0 +1,23 @@
+  <div id="player"></div>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const myParam = urlParams.get("ch");
+
+      if (urlParams.has("match")) {
+        const sTitle = urlParams.get("match");
+        document.title = sTitle;
+        
+        document.querySelector(".post-title").innerText = sTitle
+      }
+
+      let dPlayer = document.querySelector("#player");
+
+      dPlayer.innerHTML = `
+         
+         
+ <iframe frameborder=0 width=640 height=480 src="//sportea.online/live/embed.php?ch=${myParam}" allowfullscreen scrolling=no allowtransparency></iframe>      
+ 
+ 
+ `;
+    </script>
